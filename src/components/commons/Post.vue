@@ -32,7 +32,7 @@ export default {
   data() {
     return {
       show: 1,
-      textFromProp: this.mainText
+      textFromProp: this.mainText,
     };
   },
   props: {
