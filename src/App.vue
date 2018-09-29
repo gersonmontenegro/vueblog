@@ -1,11 +1,6 @@
 <template>
   <div id="app">
-<<<<<<< HEAD
-    <img src="./assets/logo.png">
-    <HelloWorld/>
-=======
     <Home />
->>>>>>> f9c8abda40a2697a3601524843bb50b7f38b6262
   </div>
 </template>
 
