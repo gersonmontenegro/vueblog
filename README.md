@@ -84,7 +84,7 @@ Inside TopBar, every button makes the change to the currentPage variable through
 
 That's all. I liked the final result.
 
-> At this momento, and after wasted at least 4-5 hours trying to solve an issue with
+> At this moment, and after wasted at least 4-5 hours trying to solve an issue with
 > bootstrap compilation, I decided start a new project and integrate it
 > with the repository version. To be honest, I didn't know what happen,
 > maybe because Vue.js is new for me, and I don't know all its tricks.
