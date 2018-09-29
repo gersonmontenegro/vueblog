@@ -1,5 +1,5 @@
 <template>
-    <b-container v-if="page == 2" >
+    <b-container v-if="page == 2" class="container" >
         <b-row>
             <b-form @reset="onReset" @submit.prevent="onSubmit">
             <b-form-group id="emailGroup"
@@ -60,3 +60,9 @@ export default {
   }
 };
 </script>
+
+<style scoped>
+.container {
+  margin-left: 10px;
+}
+</style>
