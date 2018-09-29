@@ -1,8 +1,8 @@
 <template>
     <b-col md="6" style="background-color: white">
-        <ButtonBar @onChangeViewW="onChangeViewW" enableButtonBar />
+        <ButtonBar @onOpenModal="onOpenModal" @onChangeViewW="onChangeViewW" enableButtonBar />
         <div >
-            <h3>Post title</h3>
+            <h3>{{title}}</h3>
             <span v-if="show == 1" v-html="initText"></span>
         </div >
         <wysiwyg class="wygiwys-style" v-if="show == 2" v-model="textFromProp" />
@@ -38,6 +38,14 @@ export default {
   },
   props: {
     mainText: {
+      type: String,
+      required: true
+    },
+    title: {
+      type: String,
+      required: true
+    },
+    idPost:{
       type: String,
       required: true
     }
