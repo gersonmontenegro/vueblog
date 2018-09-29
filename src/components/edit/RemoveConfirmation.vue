@@ -2,7 +2,7 @@
   <div>
     <b-modal ref="theModalR" hide-footer title="Remove post" size="sm">
       ¿Are you sure about remove this post?
-      <p>{{title}}</p>
+      <p class="font-weight-bold">{{title}}</p>
       <div>
         <b-button variant="danger" @click="onConfirmRemove">Remove</b-button>
         <b-button variant="primary" @click="onCloseModal">Cancel</b-button>
