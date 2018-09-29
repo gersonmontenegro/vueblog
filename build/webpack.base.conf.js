@@ -4,11 +4,28 @@ const utils = require('./utils')
 const config = require('../config')
 const vueLoaderConfig = require('./vue-loader.conf')
 
+<<<<<<< HEAD
 function resolve (dir) {
   return path.join(__dirname, '..', dir)
 }
 
 
+=======
+function resolve(dir) {
+  return path.join(__dirname, '..', dir)
+}
+
+const createLintingRule = () => ({
+  test: /\.(js|vue)$/,
+  loader: 'eslint-loader',
+  enforce: 'pre',
+  include: [resolve('src'), resolve('test')],
+  options: {
+    formatter: require('eslint-friendly-formatter'),
+    emitWarning: !config.dev.showEslintErrorsInOverlay
+  }
+})
+>>>>>>> f9c8abda40a2697a3601524843bb50b7f38b6262
 
 module.exports = {
   context: path.resolve(__dirname, '../'),
@@ -31,6 +48,10 @@ module.exports = {
   },
   module: {
     rules: [
+<<<<<<< HEAD
+=======
+      ...(config.dev.useEslint ? [createLintingRule()] : []),
+>>>>>>> f9c8abda40a2697a3601524843bb50b7f38b6262
       {
         test: /\.vue$/,
         loader: 'vue-loader',
@@ -64,7 +85,15 @@ module.exports = {
           limit: 10000,
           name: utils.assetsPath('fonts/[name].[hash:7].[ext]')
         }
-      }
+      },
+
+      { test: /\.scss?$/, loaders: ['style-loader', 'css-loader', 'sass-loader'] },
+      { test: /\.css?$/, loaders: ['style-loader', 'css-loader', 'sass-loader'] },
+      { test: /\.svg(\?v=\d+\.\d+\.\d+)?$/, loader: 'file-loader?mimetype=image/svg+xml' },
+      { test: /\.woff(\?v=\d+\.\d+\.\d+)?$/, loader: "file-loader?mimetype=application/font-woff" },
+      { test: /\.woff2(\?v=\d+\.\d+\.\d+)?$/, loader: "file-loader?mimetype=application/font-woff" },
+      { test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/, loader: "file-loader?mimetype=application/octet-stream" },
+      { test: /\.eot(\?v=\d+\.\d+\.\d+)?$/, loader: "file-loader" },
     ]
   },
   node: {
