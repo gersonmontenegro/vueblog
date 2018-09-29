@@ -3,7 +3,7 @@
         <ButtonBar @onChangeViewW="onChangeViewW" enableButtonBar />
         <div >
             <h3>Post title</h3>
-            <span v-if="show == 1" v-html="textFromProp"></span>
+            <span v-if="show == 1" v-html="initText"></span>
         </div >
         <wysiwyg class="wygiwys-style" v-if="show == 2" v-model="textFromProp" />
         <ViewMoreButton />
@@ -44,6 +44,15 @@ export default {
   components: {
     ButtonBar,
     ViewMoreButton
+  },
+  computed: {
+    initText() {
+      if (this.textFromProp.length >= this.cutSize) {
+        return this.textFromProp.substring(0, this.cutSize) + "...";
+      } else {
+        return this.textFromProp;
+      }
+    }
   },
   methods: {
     onChangeViewW(value) {
