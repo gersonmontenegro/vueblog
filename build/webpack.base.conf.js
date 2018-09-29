@@ -4,6 +4,13 @@ const utils = require('./utils')
 const config = require('../config')
 const vueLoaderConfig = require('./vue-loader.conf')
 
+<<<<<<< HEAD
+function resolve (dir) {
+  return path.join(__dirname, '..', dir)
+}
+
+
+=======
 function resolve(dir) {
   return path.join(__dirname, '..', dir)
 }
@@ -18,6 +25,7 @@ const createLintingRule = () => ({
     emitWarning: !config.dev.showEslintErrorsInOverlay
   }
 })
+>>>>>>> f9c8abda40a2697a3601524843bb50b7f38b6262
 
 module.exports = {
   context: path.resolve(__dirname, '../'),
@@ -40,7 +48,10 @@ module.exports = {
   },
   module: {
     rules: [
+<<<<<<< HEAD
+=======
       ...(config.dev.useEslint ? [createLintingRule()] : []),
+>>>>>>> f9c8abda40a2697a3601524843bb50b7f38b6262
       {
         test: /\.vue$/,
         loader: 'vue-loader',
