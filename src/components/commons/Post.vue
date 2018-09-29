@@ -1,12 +1,12 @@
 <template>
     <b-col md="6" style="background-color: white">
-        <ButtonBar @onChangeViewW="onChangeViewW" enableButtonBar />
+        <ButtonBar @onOpenModal="onOpenModal" @onChangeViewW="onChangeViewW" enableButtonBar />
         <div >
-            <h3>Post title</h3>
-            <span v-if="show == 1" v-html="textFromProp"></span>
+            <h3>{{title}}</h3>
+            <span v-if="show == 1" v-html="initText"></span>
         </div >
         <wysiwyg class="wygiwys-style" v-if="show == 2" v-model="textFromProp" />
-        <ViewMoreButton />
+        <ViewMoreButton v-if="show == 1" :cutSize="cutSize" @onClickViewMore="onClickViewMore" />
     </b-col>
 </template>
 
@@ -32,11 +32,20 @@ export default {
   data() {
     return {
       show: 1,
-      textFromProp: this.mainText
+      textFromProp: this.mainText,
+      cutSize: 100
     };
   },
   props: {
     mainText: {
+      type: String,
+      required: true
+    },
+    title: {
+      type: String,
+      required: true
+    },
+    idPost:{
       type: String,
       required: true
     }
@@ -45,9 +54,24 @@ export default {
     ButtonBar,
     ViewMoreButton
   },
+  computed: {
+    initText() {
+      if (this.textFromProp.length >= this.cutSize) {
+        return this.textFromProp.substring(0, this.cutSize) + "...";
+      } else {
+        return this.textFromProp;
+      }
+    }
+  },
   methods: {
     onChangeViewW(value) {
       this.show = value;
+    },
+    onClickViewMore(value) {
+      this.cutSize = value;
+    },
+    onOpenModal(){
+      this.$emit("onOpenModal", this.idPost, this.title)
     }
   }
 };
