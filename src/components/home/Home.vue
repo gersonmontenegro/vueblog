@@ -1,5 +1,6 @@
 <template>
   <div>
+      <PostsContainer :page="currentPage"  />
       <Login :page="currentPage" />
   </div>
 </template>
@@ -18,7 +19,7 @@ export default {
   },
   data() {
     return {
-      label: "OK"
+      currentPage: 1
     };
   },
   computed: {
@@ -33,8 +34,8 @@ export default {
     }
   },
   methods: {
-    onClickOK() {
-      console.log(">>", this.value);
+    onChangePage(idPage) {
+      this.currentPage = idPage;
     }
   }
 };
