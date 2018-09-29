@@ -34,7 +34,9 @@ export default {
       this.$emit("onChangeViewW", this.showHide());
       this.buttonLabel = this.show == 2 ? "Save" : "Edit";
     },
-    onRemovePost() {}
+    onRemovePost() {
+      this.$emit("onOpenModal");
+    }
   }
 };
 </script>
