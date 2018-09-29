@@ -69,4 +69,17 @@ Enable the text editor maybe take some time, so, I'll leave this screen for now,
  - Admin home (2.1.5)
 
 And of course, is responsive thanks Bootstrap :)
- 
+
+Well, I got Login right now, and I started to add some o interactivity in order to show/hide the PostsContainer component, or the Login component using and emitter to do that, because the variable that controls which component is showed belongs to the parent component from the TopBar component.
+
+<img src="https://github.com/gersonmontenegro/vueblog/blob/master/src/assets/gif/open_postscontainer_login.gif" width="300px">
+
+The way like the emitter works is described in the next graphic:
+
+![](https://lh3.googleusercontent.com/6bAqX7wK-I1CU0kgPkhxRkNJRNTDk4ZhdrYWj821AkTPq_p8QDSJIykCGCFtvogDt2r_F5vVh8qY=s900)
+
+Components TopBar, PostsContainer y Login are at the same level that the property *currentPage*, who is a prop in PostContainer and Login. Inside these last two components, there is a validation that shows/hide the component according the prop value.
+
+Inside TopBar, every button makes the change to the currentPage variable through the emitter.
+
+That's all. I liked the final result.
