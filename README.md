@@ -3,7 +3,7 @@ Blog made in Vue.js
 
 This time, I'm gonna make something new: A Front end for a kinda of blog made entirely in Vue.js.
 
-Like in my previous personal projects, I'm gonna plan a little bit about it, so, this process will have:
+Like in my [previous](https://github.com/gersonmontenegro/cv) [personal projects](https://github.com/gersonmontenegro/cinema), I'm gonna plan a little bit about it, so, this process will have:
 
  1. The basic idea.
  2. App structure.
@@ -56,3 +56,16 @@ Yes, is not an strict one, but I need a baseline in order to make the project.
 
 Actually, it is possible that some points changes in the future. It depends from a few factors, like the time, tasks completed, etc.
 
+At this momento, and after a few hours, I got the home layout. Is quite different compared with the original design, but I think is better:
+
+![](https://lh3.googleusercontent.com/V79XTALlpNR0EiZ_pDuU_Qx5wDB8vAAKyzev7QX6QIy3dRIL8XvV0ZTS6N_oBeoIJIHIGiNV0CLn=s600)
+
+I've painted every component with a different color to explain that every part in the screen is an element ready to use, not only inside a group, but isolated as well.
+
+Enable the text editor maybe take some time, so, I'll leave this screen for now, and I'm going to create the login interface, because with the current elements, I finished the next points according to the plan:
+
+ - Home (2.1.3)
+ - Admin home (2.1.5)
+
+And of course, is responsive thanks Bootstrap :)
+ 
