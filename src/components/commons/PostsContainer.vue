@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div v-if="page == 1">
         <b-container>
             <b-row>
                 <Post />
@@ -16,6 +16,12 @@ import Post from "./Post";
 
 export default {
   name: "PostsContainer",
+  props: {
+    page: {
+      type: Number,
+      required: true
+    }
+  },
   components: {
     Post
   }

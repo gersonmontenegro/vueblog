@@ -5,8 +5,8 @@
             <b-navbar-brand href="#">VueBlog</b-navbar-brand>
             <b-collapse is-nav id="nav_collapse">
                 <b-navbar-nav>
-                <b-nav-item href="#" :click="onClickHome">Home</b-nav-item>
-                <b-nav-item href="#" :click="onClickLogin">Login</b-nav-item>
+                <b-nav-item href="#" v-on:click="onClickHome">Home</b-nav-item>
+                <b-nav-item href="#" v-on:click="onClickLogin">Login</b-nav-item>
                 </b-navbar-nav>
                 <!-- Right aligned nav items -->
                 <!-- <b-navbar-nav class="ml-auto">
@@ -37,10 +37,10 @@ export default {
   },
   methods: {
     onClickLogin() {
-      console.log("login");
+      this.$emit("change-page", 2);
     },
     onClickHome() {
-      console.log("home");
+      this.$emit("change-page", 1);
     }
   }
 };
