@@ -1,19 +1,20 @@
 <template>
   <div>
-      <TopBar />
-      <PostsContainer />
+      <Login :page="currentPage" />
   </div>
 </template>
 
 <script>
 import TopBar from "./TopBar";
 import PostsContainer from "./../commons/PostsContainer";
+import Login from "./../login/Login";
 
 export default {
   name: "Home",
   components: {
     TopBar,
-    PostsContainer
+    PostsContainer,
+    Login
   },
   data() {
     return {
