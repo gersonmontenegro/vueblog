@@ -91,4 +91,6 @@ That's all. I liked the final result.
 > 
 > Now I can continue with the project.
 
+Get the Wygiwys plugin for Vue wasn't difficult, or at least not as difficult as use another plugins, and the final result is pretty cool:
 
+<img src="https://github.com/gersonmontenegro/vueblog/blob/master/src/assets/gif/wygiwys.gif" width="300px">
