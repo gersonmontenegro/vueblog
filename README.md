@@ -34,6 +34,7 @@ Yes, usually those titles are in separate states, but this time I should di it t
 I draw some idea about what I want to do:
 
 *Home*
+
 ![](https://lh3.googleusercontent.com/Fb_ZnwzMKAtZzfrmU5kiIAmNb7ezijjepbKI0OtYsbLk96u71ydY0jPw0-wS2bvD58UG2kY_1PVf=s500)
 
 This page will show a list of post published by the admin.
