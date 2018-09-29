@@ -33,6 +33,7 @@ export default {
     return {
       show: 1,
       textFromProp: this.mainText,
+      cutSize: 100
     };
   },
   props: {
@@ -57,6 +58,9 @@ export default {
   methods: {
     onChangeViewW(value) {
       this.show = value;
+    },
+    onClickViewMore(value) {
+      this.cutSize = value;
     }
   }
 };
