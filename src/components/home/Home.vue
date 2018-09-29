@@ -23,17 +23,6 @@ export default {
       currentPage: 1
     };
   },
-  computed: {
-    buttonText() {
-      return this.label + " - " + this.value;
-    }
-  },
-  props: {
-    value: {
-      type: String,
-      required: true
-    }
-  },
   methods: {
     onChangePage(idPage) {
       this.currentPage = idPage;
