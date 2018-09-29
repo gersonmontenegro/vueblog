@@ -1,5 +1,6 @@
 <template>
   <div>
+      <TopBar @change-page="onChangePage" />
       <PostsContainer :page="currentPage"  />
       <Login :page="currentPage" />
   </div>
