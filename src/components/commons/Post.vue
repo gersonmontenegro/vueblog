@@ -6,7 +6,7 @@
             <span v-if="show == 1" v-html="initText"></span>
         </div >
         <wysiwyg class="wygiwys-style" v-if="show == 2" v-model="textFromProp" />
-        <ViewMoreButton />
+        <ViewMoreButton v-if="show == 1" :cutSize="cutSize" @onClickViewMore="onClickViewMore" />
     </b-col>
 </template>
 
