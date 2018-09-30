@@ -35,7 +35,10 @@ export default {
     return {
       show: 1,
       textFromProp: this.mainText,
-      cutSize: 100
+      cutSize: 100,
+      showItem: true,
+      postList: [],
+      removeIndex: -1
     };
   },
   props: {
@@ -47,8 +50,12 @@ export default {
       type: String,
       required: true
     },
-    idPost:{
+    idPost: {
       type: String,
+      required: true
+    },
+    index: {
+      type: Number,
       required: true
     }
   },
