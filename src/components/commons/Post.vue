@@ -79,6 +79,8 @@ export default {
       this.removeIndex = index;
       this.showItem = false;
     },
+    afterLeave: function(el) {
+      this.$emit("onFinishTransition", this.removeIndex);
     }
   }
 };
