@@ -1,5 +1,5 @@
 <template>
-  <transition name="slide-fade">
+  <transition name="slide-fade" v-on:after-leave="afterLeave">
     <b-col v-if="showItem" md="6" style="background-color: white">
         <ButtonBar @onOpenModal="onOpenModal" @onChangeViewW="onChangeViewW" enableButtonBar />
         <div >
