@@ -2,7 +2,7 @@
     <div v-if="page == 1">
         <b-container>
             <b-row>
-              <Post @onFinishTransition="onFinishTransition" :ref="'post_' + index" v-for="(post, index) in postsFromProp" :key="index" :index="index" idPost="post.id" @onOpenModal="onOpenModal" :title="post.title" :mainText="post.text" />
+              <Post :edit="edit" @onFinishTransition="onFinishTransition" :ref="'post_' + index" v-for="(post, index) in postsFromProp" :key="index" :index="index" idPost="post.id" @onOpenModal="onOpenModal" :title="post.title" :mainText="post.text != null ? post.text : ''" />
             </b-row>
         </b-container>
         <RemoveConfirmation ref="ModalReference" />
@@ -12,12 +12,14 @@
 <script>
 import Post from "./Post";
 import RemoveConfirmation from "./../edit/RemoveConfirmation";
+import FetchData from "./../../providers/FetchData";
 
 export default {
   name: "PostsContainer",
   data() {
     return {
-      postsFromProp: this.posts
+      postsFromProp: this.posts,
+      edit: false
     };
   },
   props: {
@@ -47,7 +49,24 @@ export default {
     },
     onFinishTransition(index) {
       this.$refs.ModalReference.onCloseModal();
+    },
+    setPosts(data) {
+      this.postsFromProp = data;
+    },
+    loadData() {
+      if (localStorage.token != null && localStorage.token != "") {
+        this.edit = true;
+      } else {
+        this.edit = false;
+      }
     }
+  },
+  mounted() {
+    // this.loadData();
+  },
+  updated() {
+    // console.log("lili???");
+    this.loadData();
   }
 };
 </script>
