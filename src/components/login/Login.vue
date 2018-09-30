@@ -31,6 +31,8 @@
 </template>
 
 <script>
+import FetchData from "./../../providers/FetchData";
+
 export default {
   name: "Login",
   data() {
