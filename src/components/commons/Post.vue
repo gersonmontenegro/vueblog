@@ -1,5 +1,6 @@
 <template>
-    <b-col md="6" style="background-color: white">
+  <transition name="slide-fade">
+    <b-col v-if="showItem" md="6" style="background-color: white">
         <ButtonBar @onOpenModal="onOpenModal" @onChangeViewW="onChangeViewW" enableButtonBar />
         <div >
             <h3>{{title}}</h3>
@@ -8,6 +9,7 @@
         <wysiwyg class="wygiwys-style" v-if="show == 2" v-model="textFromProp" />
         <ViewMoreButton v-if="show == 1" :cutSize="cutSize" @onClickViewMore="onClickViewMore" />
     </b-col>
+  </transition>
 </template>
 
 <script>
