@@ -103,3 +103,4 @@ So, I decided that add an animation before remove an element could be a good ide
 
 <img src="https://github.com/gersonmontenegro/vueblog/blob/master/src/assets/gif/remove_item_with_transitio.gif" width="300px">
 
+The last interface is about add a post, but right now I have all the elements to do that option without problems, I guess, so, I'm going to start with the backend using Laravel 5.7.
