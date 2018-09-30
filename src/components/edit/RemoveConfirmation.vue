@@ -17,17 +17,23 @@ export default {
   data() {
     return {
       modalShow: this.open === "1" ? true : false,
-      title: '',
-      idPost: 0
-    }
+      title: "",
+      idPost: 0,
+      kItem: 0,
+      postsList: [],
+      itemReference: null
+    };
   },
   methods: {
-    openHideModal(action, id, title){
+    openHideModal(action, id, title, k, posts, itemReference) {
       this.idPost = id;
       this.title = title;
-      if(action == 'open'){
+      this.kItem = k;
+      this.postsList = posts;
+      this.itemReference = itemReference;
+      if (action == "open") {
         this.$refs.theModalR.show();
-      }else{
+      } else {
         this.$refs.theModalR.hide();
       }
     },
@@ -35,6 +41,10 @@ export default {
       this.itemReference[0].initRemove(this.postsList, this.kItem);
     },
     onCloseModal() {
+      this.$refs.theModalR.hide();
+    },
+    removeItemFromArray() {
+      this.postsList.splice(this.kItem, 1);
       this.$refs.theModalR.hide();
     }
   }
