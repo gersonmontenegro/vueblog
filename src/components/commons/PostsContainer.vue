@@ -2,7 +2,7 @@
     <div v-if="page == 1">
         <b-container>
             <b-row>
-              <Post v-for="(post, index) in posts" :key="index" idPost="post.id" @onOpenModal="onOpenModal" :title="post.title" :mainText="post.text" />
+              <Post @onFinishTransition="onFinishTransition" :ref="'post_' + index" v-for="(post, index) in postsFromProp" :key="index" :index="index" idPost="post.id" @onOpenModal="onOpenModal" :title="post.title" :mainText="post.text" />
             </b-row>
         </b-container>
         <RemoveConfirmation ref="ModalReference" />
@@ -15,6 +15,11 @@ import RemoveConfirmation from "./../edit/RemoveConfirmation";
 
 export default {
   name: "PostsContainer",
+  data() {
+    return {
+      postsFromProp: this.posts
+    };
+  },
   props: {
     page: {
       type: Number,
@@ -30,8 +35,18 @@ export default {
     RemoveConfirmation
   },
   methods: {
-    onOpenModal(id, title) {
-      this.$refs.ModalReference.openHideModal("open", id, title);
+    onOpenModal(id, title, k) {
+      this.$refs.ModalReference.openHideModal(
+        "open",
+        id,
+        title,
+        k,
+        this.postsFromProp,
+        this.$refs["post_" + k]
+      );
+    },
+    onFinishTransition(index) {
+      this.$refs.ModalReference.onCloseModal();
     }
   }
 };
