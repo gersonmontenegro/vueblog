@@ -13,4 +13,9 @@ export default class FetchData {
         axios.defaults.headers.common['Authorization'] = 'Bearer ' + localStorage.getItem('token')
         return axios.post(this.baseURL + route, data);
     }
+
+    UserRequest(url) {
+        axios.defaults.headers.common['Authorization'] = 'Bearer ' + localStorage.getItem('token')
+        return axios.post(this.baseURL + url);
+    }
 }
