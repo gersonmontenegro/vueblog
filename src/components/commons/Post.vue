@@ -1,5 +1,6 @@
 <template>
-    <b-col md="6" style="background-color: white">
+  <transition name="slide-fade" v-on:after-leave="afterLeave">
+    <b-col v-if="showItem" md="6" style="background-color: white">
         <ButtonBar @onOpenModal="onOpenModal" @onChangeViewW="onChangeViewW" enableButtonBar />
         <div >
             <h3>{{title}}</h3>
@@ -8,6 +9,7 @@
         <wysiwyg class="wygiwys-style" v-if="show == 2" v-model="textFromProp" />
         <ViewMoreButton v-if="show == 1" :cutSize="cutSize" @onClickViewMore="onClickViewMore" />
     </b-col>
+  </transition>
 </template>
 
 <script>
@@ -33,7 +35,10 @@ export default {
     return {
       show: 1,
       textFromProp: this.mainText,
-      cutSize: 100
+      cutSize: 100,
+      showItem: true,
+      postList: [],
+      removeIndex: -1
     };
   },
   props: {
@@ -45,8 +50,12 @@ export default {
       type: String,
       required: true
     },
-    idPost:{
+    idPost: {
       type: String,
+      required: true
+    },
+    index: {
+      type: Number,
       required: true
     }
   },
@@ -70,8 +79,15 @@ export default {
     onClickViewMore(value) {
       this.cutSize = value;
     },
-    onOpenModal(){
-      this.$emit("onOpenModal", this.idPost, this.title)
+    onOpenModal() {
+      this.$emit("onOpenModal", this.idPost, this.title, this.index);
+    },
+    initRemove(postsList, index) {
+      this.removeIndex = index;
+      this.showItem = false;
+    },
+    afterLeave: function(el) {
+      this.$emit("onFinishTransition", this.removeIndex);
     }
   }
 };

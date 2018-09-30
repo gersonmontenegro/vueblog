@@ -2,10 +2,7 @@
     <div v-if="page == 1">
         <b-container>
             <b-row>
-                <Post idPost="1" @onOpenModal="onOpenModal" title="Post 1" mainText="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo" />
-                <Post idPost="2" @onOpenModal="onOpenModal" title="Post 2" mainText="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo" />
-                <Post idPost="3" @onOpenModal="onOpenModal" title="Post 3" mainText="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo" />
-                <Post idPost="4" @onOpenModal="onOpenModal" title="Post 4" mainText="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo" />
+              <Post @onFinishTransition="onFinishTransition" :ref="'post_' + index" v-for="(post, index) in postsFromProp" :key="index" :index="index" idPost="post.id" @onOpenModal="onOpenModal" :title="post.title" :mainText="post.text" />
             </b-row>
         </b-container>
         <RemoveConfirmation ref="ModalReference" />
@@ -18,9 +15,18 @@ import RemoveConfirmation from "./../edit/RemoveConfirmation";
 
 export default {
   name: "PostsContainer",
+  data() {
+    return {
+      postsFromProp: this.posts
+    };
+  },
   props: {
     page: {
       type: Number,
+      required: true
+    },
+    posts: {
+      type: Array,
       required: true
     }
   },
@@ -28,9 +34,19 @@ export default {
     Post,
     RemoveConfirmation
   },
-  methods:{
-    onOpenModal(id, title){
-      this.$refs.ModalReference.openHideModal('open', id, title);
+  methods: {
+    onOpenModal(id, title, k) {
+      this.$refs.ModalReference.openHideModal(
+        "open",
+        id,
+        title,
+        k,
+        this.postsFromProp,
+        this.$refs["post_" + k]
+      );
+    },
+    onFinishTransition(index) {
+      this.$refs.ModalReference.onCloseModal();
     }
   }
 };
