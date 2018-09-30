@@ -29,9 +29,9 @@ export default {
     Post,
     RemoveConfirmation
   },
-  methods:{
-    onOpenModal(id, title){
-      this.$refs.ModalReference.openHideModal('open', id, title);
+  methods: {
+    onOpenModal(id, title) {
+      this.$refs.ModalReference.openHideModal("open", id, title);
     }
   }
 };
