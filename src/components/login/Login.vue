@@ -1,6 +1,6 @@
 <template>
     <b-container v-if="page == 2" class="container" >
-        <b-row>
+        <b-row v-if="show">
             <b-form @reset="onReset" @submit.prevent="onSubmit">
             <b-form-group id="emailGroup"
                             label="Email address:"
@@ -26,6 +26,9 @@
             <b-button type="submit" variant="primary">Login</b-button>
             <b-button type="reset" variant="danger">Cancel</b-button>
             </b-form>
+        </b-row>
+        <b-row v-if="!show">
+          <b-button @click="onLogout" variant="danger">Logout</b-button>
         </b-row>
     </b-container>
 </template>
@@ -62,13 +65,30 @@ export default {
             title: "Login",
             text: "You had just logged!. From now, you can edit Posts."
           });
+      this.show = false;
           this.$emit("onChangePage", 1);
-        }
+    },
+    onLogout() {
+      let f = new FetchData();
+      f.UserRequest("logout").then(data => {
+        this.$notify({
+          group: "foo",
+          title: "Logout",
+          text: data.data.message,
+          type: "success"
+        });
+        localStorage.token = "";
+        this.show = true;
       });
     },
     onReset(evt) {
       this.form.email = "";
       this.form.password = "";
+      this.show = false;
+    }
+  },
+  updated() {
+    if (localStorage.token != null && localStorage.token != "") {
       this.show = false;
     }
   }
