@@ -32,8 +32,7 @@ export default {
       }
     },
     onConfirmRemove() {
-      // this.$refs.myModalRef.show();
-      console.log(">", this.$refs);
+      this.itemReference[0].initRemove(this.postsList, this.kItem);
     },
     onCloseModal() {
       this.$refs.theModalR.hide();
