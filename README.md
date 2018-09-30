@@ -104,3 +104,14 @@ So, I decided that add an animation before remove an element could be a good ide
 <img src="https://github.com/gersonmontenegro/vueblog/blob/master/src/assets/gif/remove_item_with_transitio.gif" width="300px">
 
 The last interface is about add a post, but right now I have all the elements to do that option without problems, I guess, so, I'm going to start with the backend using Laravel 5.7.
+
+So, at this moment I've been working in the lasts requirements, and I already got:
+
+ 1. Load posts from server database.
+ 2. Login system, with a nice [notification](https://github.com/euvl/vue-notification) message.
+ 3. Logout option.
+ 4. Validate edit buttons according to the user session.
+
+Below I'm gonna show those points:
+
+<img src="https://github.com/gersonmontenegro/vueblog/blob/master/src/assets/gif/login.gif" width="300px">
