@@ -22,6 +22,10 @@ export default {
     page: {
       type: Number,
       required: true
+    },
+    posts: {
+      type: Array,
+      required: true
     }
   },
   components: {
