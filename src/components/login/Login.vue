@@ -35,14 +35,15 @@
 
 <script>
 import FetchData from "./../../providers/FetchData";
+import "./../../assets/css/Login.css";
 
 export default {
   name: "Login",
   data() {
     return {
       form: {
-        email: "",
-        password: ""
+        email: "johndoe@gmail.com",
+        password: "123456"
       },
       show: true
     };
@@ -58,15 +59,30 @@ export default {
       let f = new FetchData();
       f.Login(this.form).then(data => {
         if (typeof data.data.access_token == "string") {
-          localStorage.setItem("token", data.data.access_token);
-          this.$notify({
-            group: "foo",
-            type: "success",
-            title: "Login",
-            text: "You had just logged!. From now, you can edit Posts."
-          });
+          this.onOkLogin(data.data.access_token);
+        } else {
+          this.onKo();
+        }
+      });
+    },
+    onKo() {
+      this.$notify({
+        group: "foo",
+        type: "error",
+        title: "Login",
+        text: "There was an error requesting data."
+      });
+    },
+    onOkLogin(token) {
+      localStorage.token = token;
+      this.$notify({
+        group: "foo",
+        type: "success",
+        title: "Login",
+        text: "You had just logged!. From now, you can edit Posts."
+      });
       this.show = false;
-          this.$emit("onChangePage", 1);
+      this.$emit("onChangePage", 1);
     },
     onLogout() {
       let f = new FetchData();
