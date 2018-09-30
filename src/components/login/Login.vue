@@ -52,7 +52,19 @@ export default {
   },
   methods: {
     onSubmit(evt) {
-      alert(JSON.stringify(this.form));
+      let f = new FetchData();
+      f.Login(this.form).then(data => {
+        if (typeof data.data.access_token == "string") {
+          localStorage.setItem("token", data.data.access_token);
+          this.$notify({
+            group: "foo",
+            type: "success",
+            title: "Login",
+            text: "You had just logged!. From now, you can edit Posts."
+          });
+          this.$emit("onChangePage", 1);
+        }
+      });
     },
     onReset(evt) {
       this.form.email = "";
