@@ -72,6 +72,9 @@ export default {
     onClickViewMore(value) {
       this.cutSize = value;
     },
+    onOpenModal() {
+      this.$emit("onOpenModal", this.idPost, this.title, this.index);
+    },
     initRemove(postsList, index) {
       this.removeIndex = index;
       this.showItem = false;
