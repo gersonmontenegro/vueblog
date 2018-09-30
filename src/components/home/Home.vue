@@ -2,7 +2,7 @@
   <div>
       <TopBar @change-page="onChangePage" />
       <PostsContainer :page="currentPage" :posts="posts" />
-      <Login :page="currentPage" />
+      <Login :page="currentPage" @onChangePage="onChangePage" />
   </div>
 </template>
 
