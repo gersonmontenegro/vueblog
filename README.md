@@ -94,3 +94,12 @@ That's all. I liked the final result.
 Get the Wygiwys plugin for Vue wasn't difficult, or at least not as difficult as use another plugins, and the final result is pretty cool:
 
 <img src="https://github.com/gersonmontenegro/vueblog/blob/master/src/assets/gif/wygiwys.gif" width="300px">
+
+I had just implemented the modal to confirm remove a post before published my last commit until this moment.
+
+I found some really cool to add: transitions. I like a lot animations inside an app, but, obviously, with out over kill the app with to much of them.
+
+So, I decided that add an animation before remove an element could be a good idea for the UX. And after a few time understanding and implementing, this is the result:
+
+<img src="https://github.com/gersonmontenegro/vueblog/blob/master/src/assets/gif/remove_item_with_transitio.gif" width="300px">
+
