@@ -28,16 +28,17 @@ export default {
   methods: {
     onChangePage(idPage) {
       this.currentPage = idPage;
-    }
-  },
-  mounted() {
-    let f = new FetchData();
-    f.DataRequest({}, "posts/get/all").then(data => {
+    },
+    onLoadPost(data) {
       if (data.data.length != null) {
         this.posts = data.data;
         this.$refs.pContainer.setPosts(data.data);
       }
-    });
+    }
+  },
+  mounted() {
+    let e = new EditPost();
+    e.Edit({}, this.onLoadPost, "posts/get/all");
   }
 };
 </script>
