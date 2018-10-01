@@ -1,6 +1,6 @@
 <template>
   <transition name="slide-fade" v-on:after-leave="afterLeave">
-    <b-col v-if="showItem" md="6" style="background-color: white">
+    <b-col v-if="showItem" md="6" class="border">
         <ButtonBar v-if="edit" @onOpenModal="onOpenModal" @onChangeViewW="onChangeViewW" enableButtonBar />
         <div >
             <h3>{{title}}</h3>
@@ -70,7 +70,7 @@ export default {
   },
   computed: {
     initText() {
-      if(this.textFromProp != null){
+      if (this.textFromProp != null) {
         if (this.textFromProp.length >= this.cutSize) {
           return this.textFromProp.substring(0, this.cutSize) + "...";
         } else {
