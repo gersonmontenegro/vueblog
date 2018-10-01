@@ -93,7 +93,7 @@ export default {
           text: data.data.message,
           type: "success"
         });
-        localStorage.token = "";
+        localStorage.clear();
         this.show = true;
       });
     },
