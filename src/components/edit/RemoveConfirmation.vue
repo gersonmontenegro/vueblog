@@ -12,6 +12,9 @@
 </template>
 
 <script>
+import EditPost from "./../../providers/EditPost";
+import Helper from "./../../providers/Helper";
+
 export default {
   name: "RemoveConfirmation",
   data() {
@@ -38,7 +41,17 @@ export default {
       }
     },
     onConfirmRemove() {
+      let e = new EditPost();
+      e.Edit({ _id: this.idPost }, this.onRemovePost, "posts/remove");
       this.itemReference[0].initRemove(this.postsList, this.kItem);
+    },
+    onRemovePost(data) {
+      let h = new Helper();
+      if (data.data != null) {
+        h.openNotify("success", "Remove post", "Post removed");
+      } else {
+        h.openNotify("danger", "Remove post", "The Post couldn't removed");
+      }
     },
     onCloseModal() {
       this.$refs.theModalR.hide();
