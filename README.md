@@ -125,3 +125,8 @@ Now, I'm going to edit, and remove an existing post.
 <img src="https://github.com/gersonmontenegro/vueblog/blob/master/src/assets/gif/edit_remove.gif" width="300px">
 
 And after maybe an hour, at least I finished the complete requirement, and I'm gonna make an application scheme in order to show a general idea of the work that I just made.
+
+Well, this graphic took me more time that I expected to complete it, but I think that explain pretty well the app scheme, where I made components, providers, and server requests.
+
+![](https://lh3.googleusercontent.com/t_k2c42Gh8l5G7UbHdwtHJg-vlkjBL8WiZG5pomKMI46T6luc3YzOKgvD8TsMqND75lZ4KbfENg_=s1000)
+
