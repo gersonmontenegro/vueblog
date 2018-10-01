@@ -128,5 +128,4 @@ And after maybe an hour, at least I finished the complete requirement, and I'm g
 
 Well, this graphic took me more time that I expected to complete it, but I think that explain pretty well the app scheme, where I made components, providers, and server requests.
 
-![](https://lh3.googleusercontent.com/t_k2c42Gh8l5G7UbHdwtHJg-vlkjBL8WiZG5pomKMI46T6luc3YzOKgvD8TsMqND75lZ4KbfENg_=s1000)
-
+![](https://lh3.googleusercontent.com/YGCQOLsvPj5FlHXXorltIYxwNkmr4ZQgLeEqIvsTAbbYzXIb5bf9Zg5qNOuNtt2V9RkDPTQko6zi=s1000)
