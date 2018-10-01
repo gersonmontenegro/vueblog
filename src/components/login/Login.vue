@@ -82,7 +82,18 @@ export default {
         text: "You had just logged!. From now, you can edit Posts."
       });
       this.show = false;
+      this.loadUserData();
       this.$emit("onChangePage", 1);
+    },
+    loadUserData() {
+      let f = new FetchData();
+      f.UserRequest("user").then(data => {
+        if (data.data != null) {
+          localStorage.id = data.data.id;
+          localStorage.name = data.data.name;
+          localStorage.email = data.data.email;
+        }
+      });
     },
     onLogout() {
       let f = new FetchData();
