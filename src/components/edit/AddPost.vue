@@ -17,6 +17,7 @@
 <script>
 import Vue from "vue";
 import wysiwyg from "vue-wysiwyg";
+import FetchData from "./../../providers/FetchData";
 
 import "vue-wysiwyg/dist/vueWysiwyg.css";
 
@@ -48,7 +49,16 @@ export default {
       this.show_editor = !this.show_editor;
     },
     onClickSave() {
-      console.log("save!!");
+      let f = new FetchData();
+      f.DataRequest(
+        {
+          title: this.title,
+          text: this.text,
+          creator: localStorage.id
+        },
+        "posts/add"
+      ).then(this.onSavePost);
+    },
     },
     onClickCancel() {
       this.title = "";
