@@ -10,7 +10,7 @@
 import TopBar from "./TopBar";
 import PostsContainer from "./../commons/PostsContainer";
 import Login from "./../login/Login";
-import FetchData from "./../../providers/FetchData";
+import EditPost from "./../../providers/EditPost";
 
 export default {
   name: "Home",
