@@ -1,5 +1,6 @@
 <template>
     <div v-if="page == 1">
+        <AddPost @setPosts="setPosts" v-if="edit" />
         <b-container>
             <b-row>
               <Post :edit="edit" @onFinishTransition="onFinishTransition" :ref="'post_' + index" v-for="(post, index) in postsFromProp" :key="index" :index="index" idPost="post.id" @onOpenModal="onOpenModal" :title="post.title" :mainText="post.text != null ? post.text : ''" />
@@ -13,6 +14,7 @@
 import Post from "./Post";
 import RemoveConfirmation from "./../edit/RemoveConfirmation";
 import FetchData from "./../../providers/FetchData";
+import AddPost from "./../edit/AddPost";
 
 export default {
   name: "PostsContainer",
@@ -34,7 +36,8 @@ export default {
   },
   components: {
     Post,
-    RemoveConfirmation
+    RemoveConfirmation,
+    AddPost
   },
   methods: {
     onOpenModal(id, title, k) {
