@@ -101,6 +101,14 @@ export default {
         "posts/edit"
       );
     },
+    onEditPost(data) {
+      let h = new Helper();
+      if (data.data != null) {
+        h.openNotify("success", "Edit post", "Post edited.");
+      } else {
+        h.openNotify("danger", "Edit post", "The post was not edited.");
+      }
+    },
     onClickViewMore(value) {
       this.cutSize = value;
     },
