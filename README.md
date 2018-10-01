@@ -115,3 +115,9 @@ So, at this moment I've been working in the lasts requirements, and I already go
 Below I'm gonna show those points:
 
 <img src="https://github.com/gersonmontenegro/vueblog/blob/master/src/assets/gif/login.gif" width="300px">
+
+One of the best indicators that tell you that the current project is about to finish, is because the caos started to disappear. The reason why I said that, is because Adding a post wasn't difficult at all.
+
+<img src="https://github.com/gersonmontenegro/vueblog/blob/master/src/assets/gif/adding_new_post.gif" width="300px">
+
+Now, I'm going to edit, and remove an existing post.
