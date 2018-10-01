@@ -121,3 +121,7 @@ One of the best indicators that tell you that the current project is about to fi
 <img src="https://github.com/gersonmontenegro/vueblog/blob/master/src/assets/gif/adding_new_post.gif" width="300px">
 
 Now, I'm going to edit, and remove an existing post.
+
+<img src="https://github.com/gersonmontenegro/vueblog/blob/master/src/assets/gif/edit_remove.gif" width="300px">
+
+And after maybe an hour, at least I finished the complete requirement, and I'm gonna make an application scheme in order to show a general idea of the work that I just made.
