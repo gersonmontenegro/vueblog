@@ -59,6 +59,19 @@ export default {
         "posts/add"
       ).then(this.onSavePost);
     },
+    onSavePost(data) {
+      if (data.data != null) {
+        this.onClickCancel();
+        this.showNotify("success", "Add post", "Post added");
+        this.$emit("setPosts", data.data);
+      } else {
+        this.showNotify(
+          "danger",
+          "Add post",
+          "There was an error adding el new post."
+        );
+      }
+    },
     },
     onClickCancel() {
       this.title = "";
