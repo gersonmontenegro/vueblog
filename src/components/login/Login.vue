@@ -28,13 +28,14 @@
             </b-form>
         </b-row>
         <b-row v-if="!show">
-          <b-button @click="onLogout" variant="danger">Logout</b-button>
+          <b-button @click="onClickLogout" variant="danger">Logout</b-button>
         </b-row>
     </b-container>
 </template>
 
 <script>
-import FetchData from "./../../providers/FetchData";
+import EditPost from "./../../providers/EditPost";
+import Helper from "./../../providers/Helper";
 import "./../../assets/css/Login.css";
 
 export default {
@@ -56,14 +57,15 @@ export default {
   },
   methods: {
     onSubmit(evt) {
-      let f = new FetchData();
-      f.Login(this.form).then(data => {
-        if (typeof data.data.access_token == "string") {
-          this.onOkLogin(data.data.access_token);
-        } else {
-          this.onKo();
-        }
-      });
+      let e = new EditPost();
+      e.Login(this.form, this.onLogin);
+    },
+    onLogin(data) {
+      if (typeof data.data.access_token == "string") {
+        this.onOkLogin(data.data.access_token);
+      } else {
+        this.onKo();
+      }
     },
     onKo() {
       this.$notify({
@@ -86,27 +88,25 @@ export default {
       this.$emit("onChangePage", 1);
     },
     loadUserData() {
-      let f = new FetchData();
-      f.UserRequest("user").then(data => {
-        if (data.data != null) {
-          localStorage.id = data.data.id;
-          localStorage.name = data.data.name;
-          localStorage.email = data.data.email;
-        }
-      });
+      let e = new EditPost();
+      e.GetUser(UserRequest);
     },
-    onLogout() {
-      let f = new FetchData();
-      f.UserRequest("logout").then(data => {
-        this.$notify({
-          group: "foo",
-          title: "Logout",
-          text: data.data.message,
-          type: "success"
-        });
-        localStorage.clear();
-        this.show = true;
-      });
+    onLoadUser(data) {
+      if (data.data != null) {
+        localStorage.id = data.data.id;
+        localStorage.name = data.data.name;
+        localStorage.email = data.data.email;
+      }
+    },
+    onClickLogout() {
+      let e = new EditPost();
+      e.Logout(this.onLogout);
+    },
+    onLogout(data) {
+      let h = new Helper();
+      h.openNotify("success", "Logout", data.data.message);
+      localStorage.clear();
+      this.show = true;
     },
     onReset(evt) {
       this.form.email = "";

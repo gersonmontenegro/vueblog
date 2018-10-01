@@ -10,7 +10,7 @@
 import TopBar from "./TopBar";
 import PostsContainer from "./../commons/PostsContainer";
 import Login from "./../login/Login";
-import FetchData from "./../../providers/FetchData";
+import EditPost from "./../../providers/EditPost";
 
 export default {
   name: "Home",
@@ -28,16 +28,17 @@ export default {
   methods: {
     onChangePage(idPage) {
       this.currentPage = idPage;
-    }
-  },
-  mounted() {
-    let f = new FetchData();
-    f.DataRequest({}, "posts/get/all").then(data => {
+    },
+    onLoadPost(data) {
       if (data.data.length != null) {
         this.posts = data.data;
         this.$refs.pContainer.setPosts(data.data);
       }
-    });
+    }
+  },
+  mounted() {
+    let e = new EditPost();
+    e.Edit({}, this.onLoadPost, "posts/get/all");
   }
 };
 </script>

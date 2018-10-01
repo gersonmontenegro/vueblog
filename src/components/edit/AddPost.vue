@@ -17,7 +17,8 @@
 <script>
 import Vue from "vue";
 import wysiwyg from "vue-wysiwyg";
-import FetchData from "./../../providers/FetchData";
+import EditPost from "./../../providers/EditPost";
+import Helper from "./../../providers/Helper";
 
 import "vue-wysiwyg/dist/vueWysiwyg.css";
 
@@ -39,46 +40,34 @@ export default {
     };
   },
   methods: {
-    onOpenModal() {
-      console.log("1!!");
-    },
-    onChangeViewW() {
-      console.log("2!!");
-    },
     onClickCreate() {
       this.show_editor = !this.show_editor;
     },
     onClickSave() {
-      let f = new FetchData();
-      f.DataRequest(
+      let e = new EditPost();
+      e.Edit(
         {
           title: this.title,
           text: this.text,
           creator: localStorage.id
         },
+        this.onSavePost,
         "posts/add"
-      ).then(this.onSavePost);
+      );
     },
     onSavePost(data) {
+      let h = new Helper();
       if (data.data != null) {
         this.onClickCancel();
-        this.showNotify("success", "Add post", "Post added");
+        h.openNotify("success", "Add post", "Post added");
         this.$emit("setPosts", data.data);
       } else {
-        this.showNotify(
+        h.openNotify(
           "danger",
           "Add post",
           "There was an error adding el new post."
         );
       }
-    },
-    showNotify(type, title, text) {
-      this.$notify({
-        group: "foo",
-        type: type,
-        title: title,
-        text: text
-      });
     },
     onClickCancel() {
       this.title = "";

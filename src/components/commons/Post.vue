@@ -17,6 +17,8 @@ import Vue from "vue";
 import ButtonBar from "./ButtonBar";
 import ViewMoreButton from "./ViewMoreButton";
 import wysiwyg from "vue-wysiwyg";
+import EditPost from "./../../providers/EditPost";
+import Helper from "./../../providers/Helper";
 
 import "vue-wysiwyg/dist/vueWysiwyg.css";
 import "./css/Post.css";
@@ -81,7 +83,31 @@ export default {
   },
   methods: {
     onChangeViewW(value) {
+      if (value == 1) {
+        this.initEditPost();
+      }
       this.show = value;
+    },
+    initEditPost() {
+      let e = new EditPost();
+      e.Edit(
+        {
+          _id: this.idPost,
+          title: this.title,
+          text: this.textFromProp,
+          creator: localStorage.id
+        },
+        this.onEditPost,
+        "posts/edit"
+      );
+    },
+    onEditPost(data) {
+      let h = new Helper();
+      if (data.data != null) {
+        h.openNotify("success", "Edit post", "Post edited.");
+      } else {
+        h.openNotify("danger", "Edit post", "The post was not edited.");
+      }
     },
     onClickViewMore(value) {
       this.cutSize = value;
