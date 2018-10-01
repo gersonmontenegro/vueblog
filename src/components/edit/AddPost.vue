@@ -72,6 +72,13 @@ export default {
         );
       }
     },
+    showNotify(type, title, text) {
+      this.$notify({
+        group: "foo",
+        type: type,
+        title: title,
+        text: text
+      });
     },
     onClickCancel() {
       this.title = "";
